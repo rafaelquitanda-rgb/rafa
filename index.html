@@ -1,136 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Portal de Capacitação NVEH</title>
+    <title>Portal de Capacitação das Síndrome Gripais</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fonte -->
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-<header>
+    <header class="hero">
 
-<h1>Portal de Capacitação</h1>
+        <div class="container text-center">
 
-<p>
+            <h1>Portal de Capacitação das Síndromes Gripais</h1>
 
-Materiais de apoio às capacitações em Vigilância Epidemiológica Hospitalar
+            <p>
 
-</p>
+                Repositório de materiais de apoio às capacitações em Vigilância Epidemiológica das Síndomes Gripais no Distrito Federal
 
-</header>
+            </p>
 
-<section class="pesquisa">
+            <input
+                class="form-control pesquisa"
+                type="text"
+                placeholder="Pesquisar materiais...">
 
-<input type="text" placeholder="🔍 Pesquisar materiais...">
+        </div>
 
-</section>
+    </header>
+    <section class="container my-5">
 
-<section class="cards">
+    <div class="alert alert-light shadow-sm border-0 rounded-4 p-4">
 
-<div class="card">
+        <h3 class="mb-3">
+            👋 Bem-vindo!
+        </h3>
 
-🦠
+        <p class="mb-0">
 
-<h2>Vigilância da SRAG</h2>
+            Este portal reúne os materiais apresentados durante as capacitações e reuniões técnicas realizadas pela área técnica das síndromes gripais da SES-DF (GEVITHA/DIVEP/SVS) com os Núcleos de Vigilância Epidemiológica ou de Controle de Infecção da rede pública e privada do Distrito Federal.
 
-<p>Fluxos, protocolos e materiais das capacitações.</p>
+            Após cada capacitação, as apresentações, protocolos, fluxogramas, notas técnicas, vídeos e materiais complementares serão disponibilizados neste ambiente para consulta sempre que necessário.
 
-<button>Acessar</button>
+        </p>
 
-</div>
-
-<div class="card">
-
-💉
-
-<h2>Influenza</h2>
-
-<p>Vigilância, vacinação e monitoramento.</p>
-
-<button>Acessar</button>
-
-</div>
-
-<div class="card">
-
-👶
-
-<h2>VSR</h2>
-
-<p>Materiais sobre Vírus Sincicial Respiratório.</p>
-
-<button>Acessar</button>
-
-</div>
-
-<div class="card">
-
-🦠
-
-<h2>COVID-19</h2>
-
-<p>Protocolos e painéis.</p>
-
-<button>Acessar</button>
-
-</div>
-
-<div class="card">
-
-🧪
-
-<h2>Diagnóstico Laboratorial</h2>
-
-<p>Coleta, transporte e exames.</p>
-
-<button>Acessar</button>
-
-</div>
-
-<div class="card">
-
-📊
-
-<h2>Indicadores</h2>
-
-<p>Painéis e indicadores epidemiológicos.</p>
-
-<button>Acessar</button>
-
-</div>
+    </div>
 
 </section>
 
-<section class="novidades">
+    <main class="container">
 
-<h2>Últimas Atualizações</h2>
+        <div class="row g-4">
 
-<ul>
+            <div class="col-md-4">
 
-<li>📄 Fluxograma de SRAG atualizado</li>
+                <div class="card modulo">
 
-<li>🎥 Nova Webconferência</li>
+                    <div class="card-body">
 
-<li>📊 Painel Power BI atualizado</li>
+                        <h2>🧪 Vigilância Sentinela da Síndrome Gripal</h2>
 
-</ul>
+                        <p>Materiais sobre vigilância sentinela, coleta e monitoramento.</p>
 
-</section>
+                        <button class="btn btn-primary">
 
-<footer>
+                            Acessar
 
-Portal desenvolvido para apoio às capacitações dos Núcleos de Vigilância Epidemiológica Hospitalar.
+                        </button>
 
-</footer>
+                    </div>
 
-<script src="script.js"></script>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card modulo">
+
+                    <div class="card-body">
+
+                        <h2>🫁 Vigilância da Síndrome Respiratória Aguda Grave (SRAG)</h2>
+
+                        <p>Apresentações, documentos técnicos, boletins epidemiológicos, paineis de monitoramento e outros materiais.</p>
+
+                        <a href="paginas/srag.html" class="btn btn-primary">
+
+                            Acessar
+                    
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card modulo">
+
+                    <div class="card-body">
+
+                        <h2> 🦠 Vigilância da covid-19</h2>
+
+                        <p>Protocolos, indicadores e materiais técnicos relacionados à COVID-19</p>
+
+                        <button class="btn btn-primary">
+
+                            Acessar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+<script src="js/script.js"></script>
 
 </body>
 
