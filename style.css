@@ -1,0 +1,142 @@
+/* ======================================================
+   PORTAL DE CAPACITAÇÃO SÍNDROMES GRIPAIS
+   Desenvolvido por etapas
+====================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#F4F7FB;
+
+    color:#1f2937;
+
+}
+
+/*======================
+    CABEÇALHO
+========================*/
+
+.hero{
+
+    background:linear-gradient(135deg,#0B5ED7,#0A3D91);
+
+    color:white;
+
+    padding:70px 20px;
+
+    text-align:center;
+
+}
+
+.hero h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+}
+
+.hero p{
+
+    margin-top:15px;
+
+    font-size:20px;
+
+    opacity:.95;
+
+}
+
+/*======================
+      PESQUISA
+========================*/
+
+.pesquisa{
+
+    margin-top:35px;
+
+    max-width:650px;
+
+    margin-left:auto;
+
+    margin-right:auto;
+
+    border-radius:40px;
+
+    padding:15px;
+
+    font-size:18px;
+
+}
+
+/*======================
+      MÓDULOS
+========================*/
+
+main{
+
+    margin-top:60px;
+
+    margin-bottom:80px;
+
+}
+
+.modulo{
+
+    border:none;
+
+    border-radius:18px;
+
+    transition:.30s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    height:100%;
+
+}
+
+.modulo:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.card-body{
+
+    padding:35px;
+
+}
+
+.card-body h2{
+
+    font-size:26px;
+
+    margin-bottom:15px;
+
+}
+
+.card-body p{
+
+    color:#555;
+
+    margin-bottom:25px;
+
+    min-height:70px;
+
+}
+
+.btn{
+
+    border-radius:30px;
+
+    padding:10px 25px;
+
+}
