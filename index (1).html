@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#142b42">
+<title>Portal de Capacitação</title>
+<style>
+:root{--navy:#142b42;--navy2:#203b54;--ink:#172b3a;--muted:#64748b;--bg:#f3f6f8;--card:#fff;--line:#dbe3e9;--accent:#168579;--shadow:0 12px 32px rgba(20,43,66,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid #60a5fa;outline-offset:3px}
+.topbar{background:var(--navy);color:white;padding:18px clamp(16px,4vw,42px);display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:5;box-shadow:0 5px 20px #0f24351c}
+.brand-icon{width:46px;height:46px;display:grid;place-items:center;background:#d1fae5;color:#065f46;border-radius:14px;font-size:24px}
+.brand{min-width:0;flex:1}.brand strong{display:block;font-size:1rem;letter-spacing:.04em}.brand span{display:block;color:#cbd5e1;font-size:.83rem}
+.home-button,.menu-button{border:1px solid #496177;background:var(--navy2);color:white;border-radius:11px;padding:10px 13px}
+.wrap{width:min(1120px,100%);margin:auto;padding:clamp(18px,4vw,38px) clamp(14px,3vw,28px) 48px}
+.eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.11em;color:#537084;text-transform:uppercase}
+h1,h2,h3,p{margin-top:0}h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.06;letter-spacing:-.04em;margin-bottom:14px}h2{font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.025em;margin-bottom:8px}h3{font-size:1.05rem;margin-bottom:6px}
+.lead{font-size:1.08rem;color:var(--muted);max-width:700px}
+.hero{padding:clamp(24px,5vw,52px);background:linear-gradient(130deg,#fff 0%,#e6f4f2 100%);border:1px solid #dcebe9;border-radius:26px;box-shadow:var(--shadow);margin-bottom:30px}
+.hero-label{display:inline-flex;gap:8px;align-items:center;border-radius:999px;background:#d9f3ee;color:#11665e;padding:7px 12px;font-weight:750;font-size:.8rem;margin-bottom:22px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:26px}
+.stat{background:#ffffffb8;border:1px solid #d9e6e5;border-radius:16px;padding:15px}.stat strong{display:block;font-size:1.55rem}.stat span{font-size:.82rem;color:var(--muted)}
+.section-heading{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:30px 0 16px}
+.trail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.trail-card{--trail:#168579;display:flex;align-items:center;gap:15px;text-align:left;width:100%;padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--card);color:inherit;box-shadow:0 3px 10px #142b4207;transition:transform .16s,box-shadow .16s,border-color .16s}
+.trail-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--trail)}
+.trail-icon{flex:0 0 48px;width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:var(--trail);color:white;font-size:22px}
+.trail-copy{flex:1;min-width:0}.trail-copy strong{display:block;font-size:1rem;margin-bottom:3px}.trail-copy span{display:block;color:var(--muted);font-size:.87rem}.chevron{color:var(--trail);font-size:1.5rem}
+.page-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px}.back{flex-shrink:0;border:1px solid var(--line);background:white;color:var(--ink);padding:10px 13px;border-radius:12px}
+.trail-banner{--trail:#168579;background:var(--trail);color:white;padding:clamp(22px,4vw,36px);border-radius:22px;margin-bottom:24px}
+.trail-banner .eyebrow{color:#ffffffc7}.trail-banner h1{font-size:clamp(1.8rem,4vw,2.7rem);margin:8px 0}.trail-banner p{margin-bottom:0;color:#ffffffeb}
+.map-intro{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px}.map-intro p{color:var(--muted);margin:0}
+.map-board{background:#eaf0f4;border:1px solid #dce4ea;border-radius:22px;padding:clamp(14px,3vw,28px);overflow:hidden}
+.start-node,.end-node{--trail:#168579;background:var(--trail);color:white;text-align:center;padding:15px 18px;border-radius:14px;max-width:540px;margin:0 auto;font-weight:800}
+.node-sub{display:block;font-size:.8rem;font-weight:500;opacity:.9;margin-top:3px}
+.connector{height:30px;width:2px;background:var(--trail);margin:auto;position:relative}
+.connector:after{content:"";position:absolute;bottom:0;left:-4px;width:8px;height:8px;border-right:2px solid var(--trail);border-bottom:2px solid var(--trail);transform:rotate(45deg)}
+.stage-list{display:flex;flex-direction:column;align-items:stretch;gap:0;max-width:700px;margin:auto}
+.stage-wrap{display:flex;flex-direction:column;align-items:stretch}
+.stage-node{--trail:#168579;width:100%;display:flex;align-items:center;gap:14px;text-align:left;padding:15px;border:2px solid var(--trail);background:white;border-radius:15px;color:var(--ink);transition:transform .15s,box-shadow .15s}
+.stage-node:hover{transform:translateX(3px);box-shadow:0 8px 20px #142b4214}
+.stage-number{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;border-radius:12px;background:var(--trail);color:white;font-weight:850}
+.stage-copy{flex:1}.stage-copy strong{display:block}.stage-copy small{display:block;color:var(--muted);font-size:.87rem;margin-top:3px}.open-label{color:var(--trail);font-size:.75rem;font-weight:850;letter-spacing:.04em;white-space:nowrap}
+.end-node{margin-top:0}
+.note{font-size:.82rem;color:var(--muted);margin:14px 2px 0}
+.presentation{--trail:#168579;background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.slide-banner{background:var(--trail);color:white;padding:clamp(24px,5vw,42px)}.slide-banner .eyebrow{color:#ffffffc7}.slide-banner h2{font-size:clamp(1.7rem,4vw,2.5rem);margin:9px 0 12px}.slide-banner p{max-width:700px;margin:0;color:#ffffffeb}
+.progress{display:flex;gap:6px;margin-top:24px}.progress span{height:5px;border-radius:9px;background:#ffffff6b;flex:1}.progress span.active{background:white}
+.content-area{padding:clamp(20px,4vw,34px)}.content-area>p{color:var(--muted);max-width:760px}
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+.resource{border:1px solid var(--line);border-radius:15px;padding:17px}.resource-icon{font-size:1.4rem;margin-bottom:10px}.resource h3{font-size:.95rem}.resource p{font-size:.85rem;color:var(--muted);margin:0}
+.slide-controls{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:0 clamp(20px,4vw,34px) 26px}.btn{border:0;border-radius:12px;background:var(--navy);color:white;padding:12px 17px;font-weight:750}.btn:hover{filter:brightness(1.12)}.btn.secondary{border:1px solid var(--line);background:white;color:var(--ink)}.btn:disabled{opacity:.38;cursor:not-allowed}.slide-count{font-size:.84rem;color:var(--muted)}
+.footer{text-align:center;padding:25px 14px;color:#738494;font-size:.78rem}
+.hidden{display:none!important}
+@media(max-width:700px){.trail-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.resource-grid{grid-template-columns:1fr}.map-intro{align-items:flex-start;flex-direction:column}.open-label{font-size:0}.open-label:after{content:"↗";font-size:1.25rem}.topbar{padding:13px 15px}.brand strong{font-size:.88rem}.brand span{font-size:.75rem}.home-button,.menu-button{padding:9px 10px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-icon" aria-hidden="true">✳</div>
+  <div class="brand"><strong>PORTAL DE CAPACITAÇÃO</strong><span>Aprender · Desenvolver · Transformar</span></div>
+  <button class="home-button" id="homeBtn" type="button" aria-label="Voltar ao painel inicial">⌂ Início</button>
+</header>
+<main class="wrap">
+  <section id="dashboard">
+    <div class="hero">
+      <div class="hero-label">✦ CENTRAL DE APRENDIZAGEM</div>
+      <h1>Conhecimento em movimento.</h1>
+      <p class="lead">Explore as áreas de aprendizagem, percorra os mapas formativos e descubra os conteúdos de cada etapa.</p>
+      <div class="stats">
+        <div class="stat"><strong>05</strong><span>Áreas de navegação</span></div>
+        <div class="stat"><strong>05</strong><span>Etapas por percurso (modelo)</span></div>
+        <div class="stat"><strong>↗</strong><span>Conteúdo explorado por cliques</span></div>
+      </div>
+    </div>
+    <div class="section-heading"><div><div class="eyebrow">Escolha seu percurso</div><h2>Trilhas de aprendizagem</h2></div></div>
+    <div class="trail-grid" id="trailGrid"></div>
+  </section>
+
+  <section id="mapPage" class="hidden">
+    <div class="page-head"><button class="back" id="backDashboard" type="button">← Painel</button><div><div class="eyebrow">MAPA DE APRENDIZAGEM</div><h2 id="mapTitle">Trilha</h2></div></div>
+    <div class="trail-banner" id="trailBanner"><div class="eyebrow">PERCURSO FORMATIVO</div><h1 id="bannerTitle"></h1><p id="bannerDesc"></p></div>
+    <div class="map-intro"><div><h2>Seu percurso</h2><p>Selecione uma etapa para abrir sua apresentação.</p></div></div>
+    <div class="map-board" id="mapBoard"></div>
+    <p class="note">Protótipo demonstrativo: os títulos e descrições das etapas podem ser ajustados aos cursos e às diretrizes reais.</p>
+  </section>
+
+  <section id="presentationPage" class="hidden">
+    <div class="page-head"><button class="back" id="backMap" type="button">← Mapa</button><div><div class="eyebrow" id="crumb">TRILHA / ETAPA</div><h2 id="presentationHeading">Apresentação</h2></div></div>
+    <article class="presentation" id="presentationCard">
+      <div class="slide-banner"><div class="eyebrow" id="slideEyebrow">APRESENTAÇÃO INTERATIVA</div><h2 id="slideTitle"></h2><p id="slideText"></p><div class="progress" id="progress"></div></div>
+      <div class="content-area"><h3 id="contentHeading">Conteúdo desta etapa</h3><p id="contentIntro"></p><div class="resource-grid" id="resources"></div></div>
+      <div class="slide-controls"><button class="btn secondary" id="prevSlide" type="button">← Voltar</button><span class="slide-count" id="slideCount"></span><button class="btn" id="nextSlide" type="button">Avançar →</button></div>
+    </article>
+  </section>
+</main>
+<footer class="footer">PORTAL DE CAPACITAÇÃO · PROTÓTIPO INICIAL</footer>
+<script>
+const trails = [
+ {id:"primaria",name:"Atenção Primária",icon:"✚",color:"#168579",desc:"Cuidado próximo das pessoas e comunidades",stages:[
+  ["Fundamentos","Conhecer os princípios e a organização da área."],
+  ["Acolhimento e acesso","Explorar o primeiro contato e as necessidades do usuário."],
+  ["Práticas de cuidado","Conhecer práticas e ferramentas de trabalho."],
+  ["Integração da rede","Entender a continuidade do cuidado."],
+  ["Avaliação e melhoria","Aplicar o aprendizado e avaliar resultados."]]},
+ {id:"secundaria",name:"Atenção Secundária",icon:"⚕",color:"#3975c6",desc:"Especialidades e cuidado especializado",stages:[
+  ["Fundamentos","Conhecer o papel da atenção especializada."],
+  ["Acesso e regulação","Explorar os fluxos de acesso."],
+  ["Cuidado especializado","Conhecer práticas e competências."],
+  ["Integração assistencial","Relacionar os níveis de atenção."],
+  ["Avaliação e melhoria","Avaliar processos e resultados."]]},
+ {id:"hospitalar",name:"Atenção Hospitalar",icon:"✚",color:"#8957b2",desc:"Organização e integração do cuidado hospitalar",stages:[
+  ["Fundamentos","Conhecer a organização hospitalar."],
+  ["Segurança do paciente","Explorar práticas de segurança."],
+  ["Processos de cuidado","Conhecer os processos assistenciais."],
+  ["Transição do cuidado","Compreender a continuidade após a alta."],
+  ["Avaliação e melhoria","Avaliar qualidade e resultados."]]},
+ {id:"vigilancia",name:"Vigilância em Saúde",icon:"◉",color:"#b77928",desc:"Prevenção, monitoramento e resposta",stages:[
+  ["Fundamentos","Conhecer os conceitos de vigilância."],
+  ["Coleta de informações","Explorar dados e notificações."],
+  ["Análise de situações","Identificar riscos e padrões."],
+  ["Ação e resposta","Conhecer medidas de prevenção e controle."],
+  ["Monitoramento","Avaliar resultados das ações."]]},
+ {id:"trabalhadores",name:"Desenvolvimento dos Trabalhadores",icon:"♧",color:"#bd557b",desc:"Formação continuada e desenvolvimento profissional",stages:[
+  ["Diagnóstico","Identificar necessidades de aprendizagem."],
+  ["Planejamento","Definir objetivos e percursos formativos."],
+  ["Aprendizagem","Explorar cursos e atividades."],
+  ["Aplicação prática","Relacionar aprendizagem e trabalho."],
+  ["Avaliação","Avaliar resultados e novas necessidades."]]}
+];
+const slides = [
+ {title:s=>s[0],text:s=>s[1],heading:"Visão geral",intro:"Esta etapa apresenta os conceitos essenciais e situa o tema dentro do percurso formativo.",resources:[["▤","Material de aprendizagem","Texto, vídeo, documento ou apresentação."],["✓","Atividade prática","Exercícios e aplicação do conhecimento."],["◎","Verificação da aprendizagem","Perguntas, reflexão ou avaliação."]]},
+ {title:()=>"O que você vai aprender",text:s=>"Ao concluir esta etapa, o participante deverá compreender os conceitos centrais e reconhecer como eles se relacionam com o trabalho.",heading:"Objetivos de aprendizagem",intro:"Os objetivos específicos podem ser personalizados conforme o conteúdo oficial de cada curso.",resources:[["◎","Compreender","Reconhecer conceitos, princípios e definições."],["↗","Relacionar","Conectar o conteúdo com situações reais."],["✓","Demonstrar","Identificar evidências de aprendizagem."]]},
+ {title:()=>"Aplicação prática",text:s=>"Use esta etapa para relacionar o conteúdo a exemplos, situações de trabalho e ações possíveis.",heading:"Atividade e materiais",intro:"Inclua aqui os recursos e as atividades que apoiam a aplicação do conhecimento.",resources:[["▣","Estudo de caso","Uma situação prática para analisar."],["▤","Materiais de apoio","Links, arquivos, vídeos ou protocolos."],["✓","Síntese final","Principais aprendizados e próximos passos."]]}
+];
+let currentTrail = trails[0], currentStage = 0, currentSlide = 0;
+const $ = id => document.getElementById(id);
+function showPage(page){["dashboard","mapPage","presentationPage"].forEach(id=>$(id).classList.toggle("hidden",id!==page));window.scrollTo({top:0,behavior:"smooth"});}
+function renderDashboard(){
+ $("trailGrid").innerHTML = trails.map(t=>`<button class="trail-card" style="--trail:${t.color}" data-trail="${t.id}"><span class="trail-icon" aria-hidden="true">${t.icon}</span><span class="trail-copy"><strong>${t.name}</strong><span>${t.desc}</span></span><span class="chevron" aria-hidden="true">›</span></button>`).join("");
+ document.querySelectorAll("[data-trail]").forEach(btn=>btn.addEventListener("click",()=>openTrail(btn.dataset.trail)));
+}
+function openTrail(id){
+ currentTrail=trails.find(t=>t.id===id)||trails[0];
+ $("mapTitle").textContent=currentTrail.name;
+ $("bannerTitle").textContent=currentTrail.name;
+ $("bannerDesc").textContent=currentTrail.desc;
+ $("trailBanner").style.setProperty("--trail",currentTrail.color);
+ renderMap();showPage("mapPage");
+}
+function renderMap(){
+ const t=currentTrail;
+ const stageMarkup=t.stages.map((s,i)=>`<div class="stage-wrap"><button class="stage-node" style="--trail:${t.color}" data-stage="${i}"><span class="stage-number">${String(i+1).padStart(2,"0")}</span><span class="stage-copy"><strong>${s[0]}</strong><small>${s[1]}</small></span><span class="open-label">ABRIR ETAPA ↗</span></button><div class="connector" style="--trail:${t.color}" aria-hidden="true"></div></div>`).join("");
+ $("mapBoard").innerHTML=`<div class="start-node" style="--trail:${t.color}">⚑ &nbsp; INÍCIO DO PERCURSO<span class="node-sub">Objetivos e competências</span></div><div class="connector" style="--trail:${t.color}" aria-hidden="true"></div><div class="stage-list">${stageMarkup}</div><div class="end-node" style="--trail:${t.color}">★ &nbsp; CONCLUSÃO DO PERCURSO<span class="node-sub">Síntese e avaliação da aprendizagem</span></div>`;
+ document.querySelectorAll("[data-stage]").forEach(btn=>btn.addEventListener("click",()=>openStage(Number(btn.dataset.stage))));
+}
+function openStage(index){currentStage=index;currentSlide=0;renderSlide();showPage("presentationPage");}
+function renderSlide(){
+ const t=currentTrail,s=t.stages[currentStage],sl=slides[currentSlide];
+ $("presentationCard").style.setProperty("--trail",t.color);
+ $("crumb").textContent=`${t.name.toUpperCase()} / ETAPA ${currentStage+1}`;
+ $("presentationHeading").textContent=s[0];
+ $("slideEyebrow").textContent=`ETAPA ${currentStage+1} DE ${t.stages.length} · TELA ${currentSlide+1} DE ${slides.length}`;
+ $("slideTitle").textContent=sl.title(s);
+ $("slideText").textContent=sl.text(s);
+ $("contentHeading").textContent=sl.heading;
+ $("contentIntro").textContent=sl.intro;
+ $("resources").innerHTML=sl.resources.map(r=>`<div class="resource"><div class="resource-icon" aria-hidden="true">${r[0]}</div><h3>${r[1]}</h3><p>${r[2]}</p></div>`).join("");
+ $("progress").innerHTML=slides.map((_,i)=>`<span class="${i<=currentSlide?"active":""}"></span>`).join("");
+ $("slideCount").textContent=`Tela ${currentSlide+1} de ${slides.length}`;
+ $("prevSlide").disabled=currentSlide===0;
+ $("prevSlide").textContent=currentSlide===0?"← Voltar ao mapa":"← Voltar";
+ $("nextSlide").textContent=currentSlide<slides.length-1?"Avançar →":currentStage<t.stages.length-1?"Próxima etapa →":"Concluir percurso ✓";
+}
+$("homeBtn").addEventListener("click",()=>showPage("dashboard"));
+$("backDashboard").addEventListener("click",()=>showPage("dashboard"));
+$("backMap").addEventListener("click",()=>{renderMap();showPage("mapPage")});
+$("prevSlide").addEventListener("click",()=>{if(currentSlide>0){currentSlide--;renderSlide()}else{renderMap();showPage("mapPage")}});
+$("nextSlide").addEventListener("click",()=>{if(currentSlide<slides.length-1){currentSlide++;renderSlide()}else if(currentStage<t.stages.length-1){currentStage++;currentSlide=0;renderSlide()}else{renderMap();showPage("mapPage")}});
+renderDashboard();
+</script>
+</body>
+</html>
